@@ -4,6 +4,9 @@ end
 abstract type Musician <: Person
 end
 
+abstract type Scientist <: Person
+end
+
 mutable struct Rockstar <: Musician
 	name::String
 	instrument::String
@@ -16,12 +19,13 @@ struct ClassicMusician <: Musician
 	instrument::String
 end
 
-mutable struct Physicist <: Person
+mutable struct Physicist <: Scientist
 	name::String
 	sleepHours::Float64
 	favouriteLanguage::String
 end
 #%%
+
 aure = Physicist("Aurelio", 6, "Julia")
 aure.sleepHours = 8
 aure_musician = ClassicMusician("Aurelio", "Violin")
@@ -49,6 +53,11 @@ function introduceMe(person::Rockstar)
 
 	println("My band name is $(person.bandName) and my favourite headband colour is $(person.headbandColor)!")
 end
+
+function introduceMe(person::Scientist)
+    println("Hello, my name is $(person.name) and I use $(person.favoriteLanguage).")
+end
+	
 #%%
 introduceMe(aure)
 
